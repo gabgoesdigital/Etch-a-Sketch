@@ -30,10 +30,18 @@ function makeColumns(cellNum) {
 
 // Function to add hover effect
 function addHoverEffect() {
-  const cells = document.querySelectorAll('.cell'); // Select cells after creation
+  const cells = document.querySelectorAll('.cell');
   cells.forEach((cell) => {
-    cell.addEventListener('mouseover', (event) => {
-      cell.classList.add('changeColor'); // Change color on hover
+    cell.dataset.darkness = 0; // Track darkness level
+
+    cell.addEventListener('mouseover', () => {
+      if (cell.dataset.darkness == 0) {
+        let randomColor = getRandomColor();
+        cell.style.backgroundColor = randomColor;
+      } else {
+        cell.style.backgroundColor = darkenColor(cell.style.backgroundColor);
+      }
+      cell.dataset.darkness = Math.min(10, Number(cell.dataset.darkness) + 1);
     });
   });
 }
@@ -71,5 +79,26 @@ button.addEventListener('click', () => {
   createNewGrid(size); // Pass size to createNewGrid
   addHoverEffect(); // Add hover effect after the grid is created
 });
+
+// Function to generate a random RGB color
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+// Function to darken a color by 10%
+function darkenColor(rgbString) {
+  let match = rgbString.match(/\d+/g); // Extract RGB values
+  if (!match) return 'rgb(0,0,0)'; // Default to black if parsing fails
+
+  let [r, g, b] = match.map(Number);
+  r = Math.max(0, r - Math.floor(r * 0.1));
+  g = Math.max(0, g - Math.floor(g * 0.1));
+  b = Math.max(0, b - Math.floor(b * 0.1));
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
 
 defaultGrid();
