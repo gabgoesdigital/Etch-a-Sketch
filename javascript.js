@@ -42,8 +42,34 @@ function addHoverEffect() {
 
 const button = document.querySelector('.popup');
 // Function for the button
+function createNewGrid(size) {
+  container.innerHTML = ''; // Clear old grid
+
+  for (let i = 0; i < size; i++) {
+    let row = document.createElement('div');
+    row.classList.add('gridRow');
+
+    for (let j = 0; j < size; j++) {
+      let cell = document.createElement('div');
+      cell.classList.add('cell');
+      row.appendChild(cell);
+    }
+
+    container.appendChild(row);
+  }
+}
+
 button.addEventListener('click', () => {
-  prompt('Choose Your Number!');
+  let gridSize = prompt('Choose Your Number (max 100):');
+
+  gridSize = parseInt(gridSize);
+  if (isNaN(gridSize) || gridSize < 1 || gridSize > 100) {
+    alert('Please enter a number between 1 and 100');
+    return;
+  }
+
+  createNewGrid(gridSize);
+  addHoverEffect();
 });
 
 defaultGrid();

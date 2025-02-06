@@ -8,11 +8,9 @@ html {
 }
 
 .popup {
-  display: flex;
   margin-bottom: 50px;
 }
 
-#container,
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -31,4 +29,16 @@ html {
 
 .changeColor {
   background-color: black;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow: auto; /* Allow scrolling when grid is too big */
+  max-height: 90vh; /* Prevents the grid from pushing the button off-screen */
+  max-width: 95vw;
+  overflow: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
