@@ -1,12 +1,5 @@
 const container = document.getElementById('container');
 
-//Creates a default grid sized 16x16
-function defaultGrid() {
-  makeRows(16);
-  makeColumns(16);
-  addHoverEffect(); // Attach event listeners AFTER grid is created
-}
-
 //Takes (rows, columns) input and makes a grid
 function makeRows(rowNum) {
   for (let r = 0; r < rowNum; r++) {
@@ -99,6 +92,13 @@ function addHoverEffect() {
       cell.dataset.darkness = Math.min(10, Number(cell.dataset.darkness) + 1);
     });
   });
+}
+
+//Creates a default grid sized 16x16
+function defaultGrid() {
+  makeRows(16);
+  makeColumns(16);
+  addHoverEffect(); // Attach event listeners AFTER grid is created
 }
 
 defaultGrid();
