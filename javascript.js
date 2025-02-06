@@ -60,16 +60,16 @@ function createNewGrid(size) {
 }
 
 button.addEventListener('click', () => {
-  let gridSize = prompt('Choose Your Number (max 100):');
+  let size = prompt('Choose Your Number (max 100):'); // User input
 
-  gridSize = parseInt(gridSize);
-  if (isNaN(gridSize) || gridSize < 1 || gridSize > 100) {
+  size = parseInt(size); // Convert to an integer
+  if (isNaN(size) || size < 1 || size > 100) {
     alert('Please enter a number between 1 and 100');
     return;
   }
 
-  createNewGrid(gridSize);
-  addHoverEffect();
+  createNewGrid(size); // Pass size to createNewGrid
+  addHoverEffect(); // Add hover effect after the grid is created
 });
 
 defaultGrid();
