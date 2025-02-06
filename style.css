@@ -7,7 +7,13 @@ html {
   justify-content: center;
 }
 
-#container {
+.popup {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+#container,
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,4 +27,8 @@ html {
   border: 1px solid gray;
   width: 20px;
   height: 20px;
+}
+
+.changeColor {
+  background-color: black;
 }
