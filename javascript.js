@@ -28,24 +28,6 @@ function makeColumns(cellNum) {
   }
 }
 
-// Function to add hover effect
-function addHoverEffect() {
-  const cells = document.querySelectorAll('.cell');
-  cells.forEach((cell) => {
-    cell.dataset.darkness = 0; // Track darkness level
-
-    cell.addEventListener('mouseover', () => {
-      if (cell.dataset.darkness == 0) {
-        let randomColor = getRandomColor();
-        cell.style.backgroundColor = randomColor;
-      } else {
-        cell.style.backgroundColor = darkenColor(cell.style.backgroundColor);
-      }
-      cell.dataset.darkness = Math.min(10, Number(cell.dataset.darkness) + 1);
-    });
-  });
-}
-
 // Select the bottom
 
 const button = document.querySelector('.popup');
@@ -99,6 +81,24 @@ function darkenColor(rgbString) {
   b = Math.max(0, b - Math.floor(b * 0.1));
 
   return `rgb(${r}, ${g}, ${b})`;
+}
+
+// Function to add hover effect
+function addHoverEffect() {
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach((cell) => {
+    cell.dataset.darkness = 0; // Track darkness level
+
+    cell.addEventListener('mouseover', () => {
+      if (cell.dataset.darkness == 0) {
+        let randomColor = getRandomColor();
+        cell.style.backgroundColor = randomColor;
+      } else {
+        cell.style.backgroundColor = darkenColor(cell.style.backgroundColor);
+      }
+      cell.dataset.darkness = Math.min(10, Number(cell.dataset.darkness) + 1);
+    });
+  });
 }
 
 defaultGrid();
