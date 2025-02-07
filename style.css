@@ -25,7 +25,6 @@ html {
 .cell {
   border: 1px solid gray;
   flex: 1 1 auto; /* Ensures even distribution */
-  aspect-ratio: 1 / 1; /*Keeps squares perfectly square */
 }
 
 .changeColor {
