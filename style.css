@@ -19,12 +19,13 @@ html {
 
 .gridRow {
   display: flex;
+  width: 100%;
 }
 
 .cell {
   border: 1px solid gray;
-  width: 20px;
-  height: 20px;
+  flex: 1 1 auto; /* Ensures even distribution */
+  aspect-ratio: 1 / 1; /*Keeps squares perfectly square */
 }
 
 .changeColor {
@@ -33,12 +34,8 @@ html {
 
 #container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* overflow: auto; /* Allow scrolling when grid is too big */
-  max-height: 90vh; /* Prevents the grid from pushing the button off-screen */
-  max-width: 95vw;
-  overflow: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  flex-wrap: wrap; /* Ensures the grid doesn't overflow */
+  width: 500px; /* Fixed grid size */
+  height: 500px; /* Fixed grid size */
+  border: 2px solid black; /* Optional border for visibility */
 }
